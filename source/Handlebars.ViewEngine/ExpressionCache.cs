@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Magxe.Handlebars.ViewEngine.Abstractions;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
-using Magxe.Handlebars;
-using Magxe.Handlebars.ViewEngine.Abstractions;
 
 namespace Magxe.Handlebars.ViewEngine
 {

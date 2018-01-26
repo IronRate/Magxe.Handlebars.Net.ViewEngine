@@ -1,5 +1,7 @@
 version: 1.8.1-ci{build}
 
+configuration: Release
+
 image: Visual Studio 2017
 
 build_script:
