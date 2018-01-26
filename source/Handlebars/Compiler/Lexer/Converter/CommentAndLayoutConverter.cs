@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using HandlebarsDotNet.Compiler.Lexer;
+using Magxe.Handlebars.Compiler.Lexer.Tokens;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Lexer.Converter
 {
     internal class CommentAndLayoutConverter : TokenConverter
     {

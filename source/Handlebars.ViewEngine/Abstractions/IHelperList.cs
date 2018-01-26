@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
-namespace HandlebarsDotNet.ViewEngine.Abstractions
+namespace Magxe.Handlebars.ViewEngine.Abstractions
 {
     public interface IHelperList : IList<Type>
     {       

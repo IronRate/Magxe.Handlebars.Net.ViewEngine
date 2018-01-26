@@ -1,11 +1,11 @@
-﻿using Xunit;
+﻿using Magxe.Handlebars.Compiler.Translation.Expression;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
-using HandlebarsDotNet.Compiler;
+using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class BasicIntegrationTests
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
 	public class DescriptionAttribute : Attribute
 	{

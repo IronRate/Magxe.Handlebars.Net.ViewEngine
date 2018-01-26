@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
-using static HandlebarsDotNet.ViewEngine.Constants;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     public class HandlebarsViewEngineOptionsSetup : ConfigureOptions<HandlebarsViewEngineOptions>
     {
@@ -9,8 +8,8 @@ namespace HandlebarsDotNet.ViewEngine
 
         private new static void Configure(HandlebarsViewEngineOptions options)
         {
-            options.ViewLocationFormats.Add(()=> "Views/{1}/{0}" + VIEW_EXTENSION);
-            options.ViewLocationFormats.Add(()=> "Views/Shared/{0}" + VIEW_EXTENSION);
+            options.ViewLocationFormats.Add(()=> "Views/{1}/{0}" + Constants.VIEW_EXTENSION);
+            options.ViewLocationFormats.Add(()=> "Views/Shared/{0}" + Constants.VIEW_EXTENSION);
         }
 }
 }

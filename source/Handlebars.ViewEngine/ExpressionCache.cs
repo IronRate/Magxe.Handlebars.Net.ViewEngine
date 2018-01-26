@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
-using HandlebarsDotNet.ViewEngine.Abstractions;
+using Magxe.Handlebars;
+using Magxe.Handlebars.ViewEngine.Abstractions;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     internal class ExpressionCache : IExpressionCache
     {

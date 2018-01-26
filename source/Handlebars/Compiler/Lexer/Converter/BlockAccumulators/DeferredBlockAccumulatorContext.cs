@@ -1,8 +1,9 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Collections.Generic;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Lexer.Converter.BlockAccumulators
 {
     internal class DeferredBlockAccumulatorContext : BlockAccumulatorContext
     {

@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Linq;
+using System.Text;
+using Magxe.Handlebars.Compiler.Lexer.Tokens;
 
-namespace HandlebarsDotNet.Compiler.Lexer
+namespace Magxe.Handlebars.Compiler.Lexer.Parsers
 {
     internal class LiteralParser : Parser
     {

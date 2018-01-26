@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class UnencodedStatementVisitor : HandlebarsExpressionVisitor
     {
-        public static Expression Visit(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Visit(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new UnencodedStatementVisitor(context).Visit(expr);
         }
@@ -15,20 +14,20 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitStatementExpression(StatementExpression sex)
+        protected override System.Linq.Expressions.Expression VisitStatementExpression(StatementExpression sex)
         {
             if (sex.IsEscaped == false)
             {
-                return Expression.Block(
+                return System.Linq.Expressions.Expression.Block(
                     typeof(void),
-                    Expression.Assign(
-                        Expression.Property(CompilationContext.BindingContext, "SuppressEncoding"),
-                        Expression.Constant(true)),
+                    System.Linq.Expressions.Expression.Assign(
+                        System.Linq.Expressions.Expression.Property(CompilationContext.BindingContext, "SuppressEncoding"),
+                        System.Linq.Expressions.Expression.Constant(true)),
                     sex,
-                    Expression.Assign(
-                        Expression.Property(CompilationContext.BindingContext, "SuppressEncoding"),
-                        Expression.Constant(false)),
-                    Expression.Empty());
+                    System.Linq.Expressions.Expression.Assign(
+                        System.Linq.Expressions.Expression.Property(CompilationContext.BindingContext, "SuppressEncoding"),
+                        System.Linq.Expressions.Expression.Constant(false)),
+                    System.Linq.Expressions.Expression.Empty());
             }
             else
             {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace HandlebarsDotNet.ViewEngine.Abstractions
+namespace Magxe.Handlebars.ViewEngine.Abstractions
 {
     public abstract class HandlebarsBaseHelper
     {

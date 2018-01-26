@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using Magxe.Handlebars.Compiler.Translation.Expression;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Structure
 {
     internal class BindingContext
     {

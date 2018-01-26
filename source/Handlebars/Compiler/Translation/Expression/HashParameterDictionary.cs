@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     public class HashParameterDictionary : Dictionary<string, object> { }
 }

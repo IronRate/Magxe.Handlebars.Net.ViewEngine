@@ -1,8 +1,7 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class NumericLiteralTests
     {

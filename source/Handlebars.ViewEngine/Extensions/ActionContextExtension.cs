@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
 
-namespace HandlebarsDotNet.ViewEngine.Extensions
+namespace Magxe.Handlebars.ViewEngine.Extensions
 {
     public static class ActionContextExtensions
     {

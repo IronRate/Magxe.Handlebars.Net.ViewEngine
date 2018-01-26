@@ -1,8 +1,7 @@
-﻿using System;
+﻿using System.IO;
 using Xunit;
-using System.IO;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
 	public class TripleStashTests
 	{

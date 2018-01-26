@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 
-namespace HandlebarsDotNet.ViewEngine.Abstractions
+namespace Magxe.Handlebars.ViewEngine.Abstractions
 {
     public interface IHandlebarsViewEngine : IViewEngine
     {

@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using HandlebarsDotNet.ViewEngine.Abstractions;
-using HandlebarsDotNet.ViewEngine.Extensions;
-using HandlebarsDotNet.ViewEngine.Helpers;
+using Magxe.Handlebars.ViewEngine.Abstractions;
+using Magxe.Handlebars.ViewEngine.Extensions;
+using Magxe.Handlebars.ViewEngine.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.Extensions.Options;
-using static HandlebarsDotNet.ViewEngine.Constants;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     public class HandlebarsViewEngine : IHandlebarsViewEngine
     {
@@ -32,7 +30,7 @@ namespace HandlebarsDotNet.ViewEngine
 
         public ViewEngineResult FindView(ActionContext context, string viewName, bool isMainPage)
         {
-            var controllerName = context.GetNormalizedRouteValue(CONTROLLER_KEY);
+            var controllerName = context.GetNormalizedRouteValue(Constants.CONTROLLER_KEY);
 
             var searchedLocations = new List<string>();
             foreach (var location in _options.ViewLocationFormats)

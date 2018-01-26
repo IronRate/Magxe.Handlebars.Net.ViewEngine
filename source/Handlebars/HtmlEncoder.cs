@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public class HtmlEncoder : ITextEncoder
     {

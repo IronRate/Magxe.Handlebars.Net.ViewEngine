@@ -1,10 +1,9 @@
-﻿using HandlebarsDotNet.ViewEngine.Abstractions;
-using HandlebarsDotNet.ViewEngine.Extensions;
+﻿using System.Threading.Tasks;
+using Magxe.Handlebars.ViewEngine.Abstractions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
-using System.Threading.Tasks;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     public class HandlebarsView : IView
     {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using HandlebarsDotNet.Compiler;
+using Magxe.Handlebars.Compiler;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public partial class Handlebars
     {

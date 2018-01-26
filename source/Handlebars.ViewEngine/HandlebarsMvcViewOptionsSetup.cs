@@ -1,9 +1,9 @@
-﻿using HandlebarsDotNet.ViewEngine.Abstractions;
+﻿using System;
+using Magxe.Handlebars.ViewEngine.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
-using System;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     public class HandlebarsMvcViewOptionsSetup : IConfigureOptions<MvcViewOptions>
     {
@@ -21,7 +21,7 @@ namespace HandlebarsDotNet.ViewEngine
 
         /// <inheritdoc />
         /// <summary>
-        /// Configures <paramref name="options" /> to use <see cref="T:HandlebarsDotNet.ViewEngine.HandlebarsViewEngine" />.
+        /// Configures <paramref name="options" /> to use <see cref="T:Magxe.Handlebars.ViewEngine.HandlebarsViewEngine" />.
         /// </summary>
         /// <param name="options">The <see cref="T:Microsoft.AspNetCore.Mvc.MvcViewOptions" /> to configure.</param>
         public void Configure(MvcViewOptions options)

@@ -1,4 +1,4 @@
-﻿namespace HandlebarsDotNet
+﻿namespace Magxe.Handlebars
 {
     public interface ITextEncoder
     {

@@ -1,4 +1,4 @@
-﻿namespace HandlebarsDotNet.ViewEngine.Helpers
+﻿namespace Magxe.Handlebars.ViewEngine.Helpers
 {
     public static class PathHelper
     {

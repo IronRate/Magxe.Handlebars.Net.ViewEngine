@@ -1,14 +1,15 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿using Magxe.Handlebars.Compiler.Structure;
+using System;
 using System.IO;
-using System.Text;
+using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class SubExpressionVisitor : HandlebarsExpressionVisitor
     {
-        public static Expression Visit(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Visit(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new SubExpressionVisitor(context).Visit(expr);
         }
@@ -18,21 +19,20 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitSubExpression(SubExpressionExpression subex)
+        protected override System.Linq.Expressions.Expression VisitSubExpression(SubExpressionExpression subex)
         {
-            var helperCall = subex.Expression as MethodCallExpression;
-            if (helperCall == null)
+            if (!(subex.Expression is MethodCallExpression helperCall))
             {
                 throw new HandlebarsCompilerException("Sub-expression does not contain a converted MethodCall expression");
             }
             HandlebarsHelper helper = GetHelperDelegateFromMethodCallExpression(helperCall);
-            return Expression.Call(
+            return System.Linq.Expressions.Expression.Call(
 #if netstandard
                 new Func<HandlebarsHelper, object, object[], string>(CaptureTextWriterOutputFromHelper).GetMethodInfo(),
 #else
                 new Func<HandlebarsHelper, object, object[], string>(CaptureTextWriterOutputFromHelper).Method,
 #endif
-                Expression.Constant(helper),
+                System.Linq.Expressions.Expression.Constant(helper),
                 Visit(helperCall.Arguments[1]),
                 Visit(helperCall.Arguments[2]));
         }

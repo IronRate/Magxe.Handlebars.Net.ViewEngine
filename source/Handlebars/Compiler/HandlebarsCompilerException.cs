@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars.Compiler
 {
     public class HandlebarsCompilerException : HandlebarsException
     {

@@ -1,18 +1,19 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using System.Linq.Expressions;
+using Magxe.Handlebars.Compiler.Structure;
+
 #if netstandard
 using System.Reflection;
 #endif
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class PartialBinder : HandlebarsExpressionVisitor
     {
         private static string SpecialPartialBlockName = "@partial-block";
 
-        public static Expression Bind(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Bind(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new PartialBinder(context).Visit(expr);
         }
@@ -22,7 +23,7 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitStatementExpression(StatementExpression sex)
+        protected override System.Linq.Expressions.Expression VisitStatementExpression(StatementExpression sex)
         {
             if (sex.Body is PartialExpression)
             {
@@ -34,12 +35,12 @@ namespace HandlebarsDotNet.Compiler
             }
         }
 
-        protected override Expression VisitPartialExpression(PartialExpression pex)
+        protected override System.Linq.Expressions.Expression VisitPartialExpression(PartialExpression pex)
         {
-            Expression bindingContext = CompilationContext.BindingContext;
+            System.Linq.Expressions.Expression bindingContext = CompilationContext.BindingContext;
             if (pex.Argument != null)
             {
-                bindingContext = Expression.Call(
+                bindingContext = System.Linq.Expressions.Expression.Call(
                     bindingContext,
                     typeof(BindingContext).GetMethod("CreateChildContext"),
                     pex.Argument);
@@ -47,33 +48,33 @@ namespace HandlebarsDotNet.Compiler
 
             var fb = new FunctionBuilder(CompilationContext.Configuration);
             var partialBlockTemplate =
-                fb.Compile(pex.Fallback != null ? new[] {pex.Fallback} : Enumerable.Empty<Expression>(), bindingContext);
+                fb.Compile(pex.Fallback != null ? new[] {pex.Fallback} : Enumerable.Empty<System.Linq.Expressions.Expression>(), bindingContext);
 
-            var partialInvocation = Expression.Call(
+            var partialInvocation = System.Linq.Expressions.Expression.Call(
 #if netstandard
                 new Func<string, BindingContext, HandlebarsConfiguration, Action<TextWriter, object>, bool>(InvokePartial).GetMethodInfo(),
 #else
                 new Func<string, BindingContext, HandlebarsConfiguration, Action<TextWriter, object>, bool>(InvokePartial).Method,
 #endif
-                Expression.Convert(pex.PartialName, typeof(string)),
+                System.Linq.Expressions.Expression.Convert(pex.PartialName, typeof(string)),
                 bindingContext,
-                Expression.Constant(CompilationContext.Configuration),
+                System.Linq.Expressions.Expression.Constant(CompilationContext.Configuration),
                 partialBlockTemplate);
 
             var fallback = pex.Fallback;
             if (fallback == null)
             {
-                fallback = Expression.Call(
+                fallback = System.Linq.Expressions.Expression.Call(
 #if netstandard
                 new Action<string>(HandleFailedInvocation).GetMethodInfo(),
 #else
                 new Action<string>(HandleFailedInvocation).Method,
 #endif
-                Expression.Convert(pex.PartialName, typeof(string)));
+                System.Linq.Expressions.Expression.Convert(pex.PartialName, typeof(string)));
             }
 
-            return Expression.IfThen(
-                    Expression.Not(partialInvocation),
+            return System.Linq.Expressions.Expression.IfThen(
+                    System.Linq.Expressions.Expression.Not(partialInvocation),
                     fallback);
         }
 

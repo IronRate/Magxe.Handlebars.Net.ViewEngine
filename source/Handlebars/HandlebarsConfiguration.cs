@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using HandlebarsDotNet.Compiler.Resolvers;
+using Magxe.Handlebars.Compiler.Resolvers;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public class HandlebarsConfiguration
     {

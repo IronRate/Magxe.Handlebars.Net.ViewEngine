@@ -1,9 +1,9 @@
-﻿using System;
-using HandlebarsDotNet.Compiler.Resolvers;
+﻿using Magxe.Handlebars.Compiler.Resolvers;
 using Newtonsoft.Json;
+using System;
 using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class CustomConfigurationTests
     {

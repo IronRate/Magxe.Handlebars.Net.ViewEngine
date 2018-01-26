@@ -3,29 +3,30 @@
   <PropertyGroup>
     <DebugType>portable</DebugType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <TargetFrameworks>net452;netstandard1.3;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <Version>1.9.2</Version>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <DefineConstants>$(DefineConstants);netstandard</DefineConstants>
-  </PropertyGroup>
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <DefineConstants>$(DefineConstants);netstandard</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup>
-    <Authors>Rex Morgan</Authors>
+    <Authors>Rex Morgan;Magentaize</Authors>
     <Copyright>Copyright © 2014-2017 Rex Morgan</Copyright>
     <Description>Blistering-fast Handlebars.js templates in your .NET application.</Description>
     <PackageIconUrl>https://raw.githubusercontent.com/rexm/Handlebars.Net/master/hbnet-icon.png</PackageIconUrl>
-    <PackageId>Handlebars.Net</PackageId>
+    <PackageId>Magxe.Handlebars.Net</PackageId>
     <PackageLicenseUrl>https://opensource.org/licenses/mit</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/rexm/Handlebars.Net</PackageProjectUrl>
-    <PackageReleaseNotes>Now supports .NET Standard 2.0.</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/Magentaize/Handlebars.Net.ViewEngine/tree/master/source/Handlebars</PackageProjectUrl>
+    <PackageReleaseNotes>Merge unoffical block helper fix and change namespace to prevent conflict.</PackageReleaseNotes>
     <PackageTags>handlebars;mustache;templating;engine;compiler</PackageTags>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/rexm/Handlebars.Net</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Magentaize/Handlebars.Net.ViewEngine/tree/master/source/Handlebars</RepositoryUrl>
+    <AssemblyName>Magxe.Handlebars</AssemblyName>
+    <RootNamespace>Magxe.Handlebars</RootNamespace>
+    <Product>Magxe.Handlebars.Net</Product>
+    <Company />
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net452'">

@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
-namespace HandlebarsDotNet.ViewEngine.Abstractions
+namespace Magxe.Handlebars.ViewEngine.Abstractions
 {
     public interface IHbsRenderer
     {

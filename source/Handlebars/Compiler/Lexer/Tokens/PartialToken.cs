@@ -1,4 +1,4 @@
-﻿namespace HandlebarsDotNet.Compiler.Lexer
+﻿namespace Magxe.Handlebars.Compiler.Lexer.Tokens
 {
     internal class PartialToken : Token
     {

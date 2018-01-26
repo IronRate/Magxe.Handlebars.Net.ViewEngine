@@ -1,4 +1,4 @@
-﻿namespace HandlebarsDotNet.Compiler.Resolvers
+﻿namespace Magxe.Handlebars.Compiler.Resolvers
 {
     public interface IExpressionNameResolver
     {

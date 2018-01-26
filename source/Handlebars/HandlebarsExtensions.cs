@@ -1,7 +1,6 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public static class HandlebarsExtensions
     {

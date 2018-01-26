@@ -1,6 +1,7 @@
 ﻿using System.IO;
+using Magxe.Handlebars;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     internal class DiskFileSystem : ViewEngineFileSystem
     {

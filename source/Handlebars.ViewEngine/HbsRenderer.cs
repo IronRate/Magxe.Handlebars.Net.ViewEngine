@@ -1,11 +1,11 @@
-﻿using HandlebarsDotNet.ViewEngine.Abstractions;
-using HandlebarsDotNet.ViewEngine.Extensions;
+﻿using Magxe.Handlebars.ViewEngine.Abstractions;
+using Magxe.Handlebars.ViewEngine.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
 using System.Threading.Tasks;
 
-namespace HandlebarsDotNet.ViewEngine
+namespace Magxe.Handlebars.ViewEngine
 {
     internal class HbsRenderer : IHbsRenderer
     {

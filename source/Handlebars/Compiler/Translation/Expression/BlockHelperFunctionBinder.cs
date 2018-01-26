@@ -1,11 +1,12 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class BlockHelperFunctionBinder : HandlebarsExpressionVisitor
     {
-        public static Expression Bind(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Bind(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new BlockHelperFunctionBinder(context).Visit(expr);
         }
@@ -15,7 +16,7 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitStatementExpression(StatementExpression sex)
+        protected override System.Linq.Expressions.Expression VisitStatementExpression(StatementExpression sex)
         {
             if (sex.Body is BlockHelperExpression)
             {
@@ -27,41 +28,41 @@ namespace HandlebarsDotNet.Compiler
             }
         }
 
-        protected override Expression VisitBlockHelperExpression(BlockHelperExpression bhex)
+        protected override System.Linq.Expressions.Expression VisitBlockHelperExpression(BlockHelperExpression bhex)
         {
             var isInlinePartial = bhex.HelperName == "#*inline";
 
             var fb = new FunctionBuilder(CompilationContext.Configuration);
 
 
-            var bindingContext = isInlinePartial ? (Expression)CompilationContext.BindingContext :
-                            Expression.Property(
+            var bindingContext = isInlinePartial ? (System.Linq.Expressions.Expression)CompilationContext.BindingContext :
+                            System.Linq.Expressions.Expression.Property(
                                 CompilationContext.BindingContext,
                                 typeof(BindingContext).GetProperty("Value"));
 
             var body = fb.Compile(((BlockExpression)bhex.Body).Expressions, CompilationContext.BindingContext);
             var inversion = fb.Compile(((BlockExpression)bhex.Inversion).Expressions, CompilationContext.BindingContext);
             var helper = CompilationContext.Configuration.BlockHelpers[bhex.HelperName.Replace("#", "")];
-            var arguments = new Expression[]
+            var arguments = new System.Linq.Expressions.Expression[]
             {
-                Expression.Property(
+                System.Linq.Expressions.Expression.Property(
                     CompilationContext.BindingContext,
                     typeof(BindingContext).GetProperty("TextWriter")),
-                Expression.New(
+                System.Linq.Expressions.Expression.New(
                         typeof(HelperOptions).GetConstructors(BindingFlags.Instance | BindingFlags.NonPublic)[0],
                         body,
                         inversion),
                 //this next arg is usually data, like { first: "Marc" } 
                 //but for inline partials this is the complete BindingContext.
                 bindingContext,
-                Expression.NewArrayInit(typeof(object), bhex.Arguments)
+                System.Linq.Expressions.Expression.NewArrayInit(typeof(object), bhex.Arguments)
             };
 
 
             if (helper.Target != null)
             {
-                return Expression.Call(
-                    Expression.Constant(helper.Target),
+                return System.Linq.Expressions.Expression.Call(
+                    System.Linq.Expressions.Expression.Constant(helper.Target),
 #if netstandard
                     helper.GetMethodInfo(),
 #else
@@ -71,7 +72,7 @@ namespace HandlebarsDotNet.Compiler
             }
             else
             {
-                return Expression.Call(
+                return System.Linq.Expressions.Expression.Call(
 #if netstandard
                     helper.GetMethodInfo(),
 #else

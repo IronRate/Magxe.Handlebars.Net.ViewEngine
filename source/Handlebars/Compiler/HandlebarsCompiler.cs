@@ -5,9 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using HandlebarsDotNet.Compiler.Lexer;
+using Magxe.Handlebars.Compiler.Lexer;
+using Magxe.Handlebars.Compiler.Lexer.Tokens;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler
 {
     internal class HandlebarsCompiler
     {

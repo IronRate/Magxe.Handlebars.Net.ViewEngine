@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using HandlebarsDotNet;
 using Xunit;
 
-namespace HandlebarsDotNet.Test.ViewEngine
+namespace Magxe.Handlebars.Test.ViewEngine
 {
     public class ViewEngineTests
     {
@@ -40,7 +38,7 @@ namespace HandlebarsDotNet.Test.ViewEngine
             };
 
             //When a viewengine renders that view
-            var handlebars = HandlebarsDotNet.Handlebars.Create(new HandlebarsConfiguration() {FileSystem = files});
+            var handlebars = Handlebars.Create(new HandlebarsConfiguration() {FileSystem = files});
             var render = handlebars.CompileView("views\\someview.hbs");
             var output = render(null);
 

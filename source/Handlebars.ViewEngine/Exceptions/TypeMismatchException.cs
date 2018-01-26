@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandlebarsDotNet.ViewEngine.Extensions
+namespace Magxe.Handlebars.ViewEngine.Exceptions
 {
     public class TypeMismatchException : Exception
     {

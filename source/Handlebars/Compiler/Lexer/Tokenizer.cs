@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
+using Magxe.Handlebars.Compiler.Lexer.Parsers;
+using Magxe.Handlebars.Compiler.Lexer.Tokens;
 
-namespace HandlebarsDotNet.Compiler.Lexer
+namespace Magxe.Handlebars.Compiler.Lexer
 {
     internal class Tokenizer
     {

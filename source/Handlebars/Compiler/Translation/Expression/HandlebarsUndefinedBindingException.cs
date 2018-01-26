@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     public class HandlebarsUndefinedBindingException : Exception
     {

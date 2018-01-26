@@ -1,10 +1,10 @@
-﻿using System.Linq.Expressions;
+﻿using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class CommentVisitor : HandlebarsExpressionVisitor
     {
-        public static Expression Visit(Expression expr, CompilationContext compilationContext)
+        public static System.Linq.Expressions.Expression Visit(System.Linq.Expressions.Expression expr, CompilationContext compilationContext)
         {
             return new CommentVisitor(compilationContext).Visit(expr);
         }
@@ -14,11 +14,11 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitStatementExpression(StatementExpression sex)
+        protected override System.Linq.Expressions.Expression VisitStatementExpression(StatementExpression sex)
         {
             if (sex.Body is CommentExpression)
             {
-                return Expression.Empty();
+                return System.Linq.Expressions.Expression.Empty();
             }
 
             return sex;

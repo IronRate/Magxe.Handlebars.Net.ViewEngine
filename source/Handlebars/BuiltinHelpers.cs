@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Collections.Generic;
-using HandlebarsDotNet.Compiler;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     internal static class BuiltinHelpers
     {

@@ -1,9 +1,7 @@
 using System;
 using System.IO;
-using HandlebarsDotNet.Compiler;
-using System.Text;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public interface IHandlebars
     {

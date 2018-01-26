@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <DebugType>full</DebugType>
-    <TargetFrameworks>net461;netcoreapp1.1;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+    <AssemblyName>Magxe.Handlebars.Test</AssemblyName>
+    <RootNamespace>Magxe.Handlebars.Test</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netcoreapp1.1'">

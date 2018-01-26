@@ -1,11 +1,11 @@
-﻿using HandlebarsDotNet.ViewEngine.Abstractions;
+﻿using Magxe.Handlebars.ViewEngine.Abstractions;
+using Magxe.Handlebars.ViewEngine.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 
-namespace HandlebarsDotNet.ViewEngine.Extensions
+namespace Magxe.Handlebars.ViewEngine.Extensions
 {
     public static class MvcBuilderExtensions
     {

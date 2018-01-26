@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using Xunit;
 
-namespace HandlebarsDotNet.Test.ViewEngine
+namespace Magxe.Handlebars.Test.ViewEngine
 {
     public class CasparTests
     {
@@ -10,7 +10,7 @@ namespace HandlebarsDotNet.Test.ViewEngine
         public void CanRenderCasparIndexTemplate()
         {
             var fs = (new DiskFileSystem());
-            var handlebars = HandlebarsDotNet.Handlebars.Create(new HandlebarsConfiguration()
+            var handlebars = Handlebars.Create(new HandlebarsConfiguration()
             {
                 FileSystem = fs
             });
@@ -41,7 +41,7 @@ namespace HandlebarsDotNet.Test.ViewEngine
         public void CanRenderCasparPostTemplate()
         {
             var fs = (new DiskFileSystem());
-            var handlebars = HandlebarsDotNet.Handlebars.Create(new HandlebarsConfiguration()
+            var handlebars = Handlebars.Create(new HandlebarsConfiguration()
             {
                 FileSystem = fs
             });

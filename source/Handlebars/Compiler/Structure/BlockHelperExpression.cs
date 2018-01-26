@@ -1,8 +1,7 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Collections.Generic;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Structure
 {
     internal class BlockHelperExpression : HelperExpression
     {

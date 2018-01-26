@@ -1,9 +1,8 @@
-﻿using Xunit;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class HelperTests
     {

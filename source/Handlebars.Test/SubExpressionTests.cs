@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class SubExpressionTests
     {

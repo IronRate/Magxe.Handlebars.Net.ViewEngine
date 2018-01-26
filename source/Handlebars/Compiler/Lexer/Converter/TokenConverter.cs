@@ -1,10 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Collections.Generic;
-using HandlebarsDotNet.Compiler.Lexer;
+﻿using System.Collections.Generic;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Lexer.Converter
 {
     internal abstract class TokenConverter
     {

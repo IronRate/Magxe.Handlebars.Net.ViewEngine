@@ -1,9 +1,8 @@
-﻿using System;
-using HandlebarsDotNet.Compiler;
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet
+namespace Magxe.Handlebars
 {
     public static class HandlebarsUtils
     {

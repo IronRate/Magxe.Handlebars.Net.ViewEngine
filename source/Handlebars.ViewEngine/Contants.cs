@@ -1,4 +1,4 @@
-﻿namespace HandlebarsDotNet.ViewEngine
+﻿namespace Magxe.Handlebars.ViewEngine
 {
     internal class Constants
     {

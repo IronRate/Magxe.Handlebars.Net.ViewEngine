@@ -1,15 +1,15 @@
-﻿using System;
-using System.Linq.Expressions;
+﻿using Magxe.Handlebars.Compiler.Structure;
+using System;
 using System.Collections;
-using System.Linq;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class DeferredSectionVisitor : HandlebarsExpressionVisitor
     {
-        public static Expression Bind(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Bind(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new DeferredSectionVisitor(context).Visit(expr);
         }
@@ -19,22 +19,22 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitDeferredSectionExpression(DeferredSectionExpression dsex)
+        protected override System.Linq.Expressions.Expression VisitDeferredSectionExpression(DeferredSectionExpression dsex)
         {
 #if netstandard
             var method = new Action<object, BindingContext, Action<TextWriter, object>, Action<TextWriter, object>>(RenderSection).GetMethodInfo();
 #else
             var method = new Action<object, BindingContext, Action<TextWriter, object>, Action<TextWriter, object>>(RenderSection).Method;
 #endif
-            Expression path = HandlebarsExpression.Path(dsex.Path.Path.Substring(1));
-            Expression context = CompilationContext.BindingContext;
-            Expression[] templates = GetDeferredSectionTemplates(dsex);
+            System.Linq.Expressions.Expression path = HandlebarsExpression.Path(dsex.Path.Path.Substring(1));
+            System.Linq.Expressions.Expression context = CompilationContext.BindingContext;
+            System.Linq.Expressions.Expression[] templates = GetDeferredSectionTemplates(dsex);
 
-            return Expression.Call(method, new[] {path, context}.Concat(templates));
+            return System.Linq.Expressions.Expression.Call(method, new[] {path, context}.Concat(templates));
 
         }
 
-        private Expression[] GetDeferredSectionTemplates(DeferredSectionExpression dsex)
+        private System.Linq.Expressions.Expression[] GetDeferredSectionTemplates(DeferredSectionExpression dsex)
         {
             var fb = new FunctionBuilder(CompilationContext.Configuration);
             var body = fb.Compile(dsex.Body.Expressions, CompilationContext.BindingContext);

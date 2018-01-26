@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using HandlebarsDotNet.ViewEngine.Abstractions;
+﻿using Magxe.Handlebars.ViewEngine.Abstractions;
 
-namespace HandlebarsDotNet.ViewEngine.Extensions
+namespace Magxe.Handlebars.ViewEngine.Extensions
 {
     public static class CollectionExtension
     {

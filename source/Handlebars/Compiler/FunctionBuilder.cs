@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Collections.Generic;
-using HandlebarsDotNet.Compiler.Lexer;
 using System.Linq.Expressions;
+using Magxe.Handlebars.Compiler.Translation.Expression;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler
 {
     internal class FunctionBuilder
     {

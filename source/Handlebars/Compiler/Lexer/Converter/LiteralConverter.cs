@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using HandlebarsDotNet.Compiler.Lexer;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using Magxe.Handlebars.Compiler.Lexer.Tokens;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Lexer.Converter
 {
     internal class LiteralConverter : TokenConverter
     {

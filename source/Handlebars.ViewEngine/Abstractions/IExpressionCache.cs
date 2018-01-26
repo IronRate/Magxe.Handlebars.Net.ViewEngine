@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HandlebarsDotNet.ViewEngine.Abstractions
+namespace Magxe.Handlebars.ViewEngine.Abstractions
 {
     internal interface IExpressionCache
     {

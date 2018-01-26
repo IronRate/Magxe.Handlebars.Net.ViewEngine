@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.IO;
-using System.Dynamic;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using System.Globalization;
+using Magxe.Handlebars.Compiler.Structure;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class PathBinder : HandlebarsExpressionVisitor
     {
-        public static Expression Bind(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Bind(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new PathBinder(context).Visit(expr);
         }
@@ -23,44 +24,44 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitBlock(BlockExpression node)
+        protected override System.Linq.Expressions.Expression VisitBlock(BlockExpression node)
         {
-            return Expression.Block(
+            return System.Linq.Expressions.Expression.Block(
                 node.Variables,
                 node.Expressions.Select(Visit));
         }
 
-        protected override Expression VisitUnary(UnaryExpression node)
+        protected override System.Linq.Expressions.Expression VisitUnary(UnaryExpression node)
         {
-            return Expression.MakeUnary(
+            return System.Linq.Expressions.Expression.MakeUnary(
                 node.NodeType,
                 Visit(node.Operand),
                 node.Type);
         }
 
-        protected override Expression VisitMethodCall(MethodCallExpression node)
+        protected override System.Linq.Expressions.Expression VisitMethodCall(MethodCallExpression node)
         {
-            return Expression.Call(
+            return System.Linq.Expressions.Expression.Call(
                 Visit(node.Object),
                 node.Method,
                 node.Arguments.Select(Visit));
         }
 
-        protected override Expression VisitConditional(ConditionalExpression node)
+        protected override System.Linq.Expressions.Expression VisitConditional(ConditionalExpression node)
         {
-            return Expression.Condition(
+            return System.Linq.Expressions.Expression.Condition(
                 Visit(node.Test),
                 Visit(node.IfTrue),
                 Visit(node.IfFalse));
         }
 
-        protected override Expression VisitSubExpression(SubExpressionExpression subex)
+        protected override System.Linq.Expressions.Expression VisitSubExpression(SubExpressionExpression subex)
         {
             return HandlebarsExpression.SubExpression(
                 Visit(subex.Expression));
         }
 
-        protected override Expression VisitStatementExpression(StatementExpression sex)
+        protected override System.Linq.Expressions.Expression VisitStatementExpression(StatementExpression sex)
         {
             if (sex.Body is PathExpression)
             {
@@ -69,8 +70,8 @@ namespace HandlebarsDotNet.Compiler
 #else
                 var writeMethod = typeof(TextWriter).GetMethod("Write", new[] { typeof(object) });
 #endif
-                return Expression.Call(
-                    Expression.Property(
+                return System.Linq.Expressions.Expression.Call(
+                    System.Linq.Expressions.Expression.Property(
                         CompilationContext.BindingContext,
                         "TextWriter"),
                     writeMethod, Visit(sex.Body));
@@ -81,37 +82,37 @@ namespace HandlebarsDotNet.Compiler
             }
         }
 
-        protected override Expression VisitPathExpression(PathExpression pex)
+        protected override System.Linq.Expressions.Expression VisitPathExpression(PathExpression pex)
         {
-            return Expression.Call(
-                Expression.Constant(this),
+            return System.Linq.Expressions.Expression.Call(
+                System.Linq.Expressions.Expression.Constant(this),
 #if netstandard
                 new Func<BindingContext, string, object>(ResolvePath).GetMethodInfo(),
 #else
                 new Func<BindingContext, string, object>(ResolvePath).Method,
 #endif
                 CompilationContext.BindingContext,
-                Expression.Constant(pex.Path));
+                System.Linq.Expressions.Expression.Constant(pex.Path));
         }
 
-        protected override Expression VisitHelperExpression(HelperExpression hex)
+        protected override System.Linq.Expressions.Expression VisitHelperExpression(HelperExpression hex)
         {
             return HandlebarsExpression.Helper(
                 hex.HelperName,
                 hex.Arguments.Select(Visit));
         }
 
-        protected override Expression VisitHashParametersExpression(HashParametersExpression hpex)
+        protected override System.Linq.Expressions.Expression VisitHashParametersExpression(HashParametersExpression hpex)
         {
-            return Expression.Call(
-                Expression.Constant(this),
+            return System.Linq.Expressions.Expression.Call(
+                System.Linq.Expressions.Expression.Constant(this),
 #if netstandard
                 new Func<BindingContext, HashParametersExpression, object>(ResolveParameters).GetMethodInfo(),
 #else
                 new Func<BindingContext, HashParametersExpression, object>(ResolveParameters).Method,
 #endif
                 CompilationContext.BindingContext,
-                Expression.Constant(hpex));
+                System.Linq.Expressions.Expression.Constant(hpex));
         }
 
         private object ResolveParameters(BindingContext context, HashParametersExpression hpex)

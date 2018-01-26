@@ -5,21 +5,21 @@
     <Authors>Magentaize</Authors>
     <Description>An ASP.NET Core view engine based on Handlebars.Net.</Description>
     <Company />
-    <AssemblyName>Handlebars.ViewEngine</AssemblyName>
-    <RootNamespace>HandlebarsDotNet.ViewEngine</RootNamespace>
+    <AssemblyName>Magxe.Handlebars.ViewEngine</AssemblyName>
+    <RootNamespace>Magxe.Handlebars.ViewEngine</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Handlebars.Net.ViewEngine</PackageId>
-    <Version>1.0.1</Version>
-    <Product>Handlebars.Net.ViewEngine</Product>
+    <PackageId>Magxe.Handlebars.Net.ViewEngine</PackageId>
+    <Version>1.0.0</Version>
+    <Product>Magxe.Handlebars.Net.ViewEngine</Product>
     <Copyright>Copyright © 2017-2018 Magentaize</Copyright>
     <PackageProjectUrl>https://github.com/Magentaize/Handlebars.Net.ViewEngine</PackageProjectUrl>
-    <PackageLicenseUrl>https://www.gnu.org/licenses/gpl.html#content</PackageLicenseUrl>
+    <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0#content</PackageLicenseUrl>
     <RepositoryUrl>https://github.com/Magentaize/Handlebars.Net.ViewEngine</RepositoryUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageIconUrl>https://raw.githubusercontent.com/Magentaize/Handlebars.Net.ViewEngine/master/hbnet-icon.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
-    <PackageTags>handlebars;mustache;templating;view engine;</PackageTags>
-    <PackageReleaseNotes>Merge unoffical block helper fix.</PackageReleaseNotes>
+    <PackageTags>handlebars;mustache;templating;view engine</PackageTags>
+    <PackageReleaseNotes>Change namespace to prevent conflict.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

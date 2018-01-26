@@ -2,11 +2,13 @@
 using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
+using Magxe.Handlebars.Compiler.Structure;
+
 #if netstandard
 using System.Reflection;
 #endif
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class ContextBinder : HandlebarsExpressionVisitor
     {
@@ -15,39 +17,39 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        public static Expression Bind(Expression body, CompilationContext context, Expression parentContext, string templatePath)
+        public static System.Linq.Expressions.Expression Bind(System.Linq.Expressions.Expression body, CompilationContext context, System.Linq.Expressions.Expression parentContext, string templatePath)
         {
-            var writerParameter = Expression.Parameter(typeof(TextWriter), "buffer");
-            var objectParameter = Expression.Parameter(typeof(object), "data");
+            var writerParameter = System.Linq.Expressions.Expression.Parameter(typeof(TextWriter), "buffer");
+            var objectParameter = System.Linq.Expressions.Expression.Parameter(typeof(object), "data");
             if (parentContext == null)
             {
-                parentContext = Expression.Constant(null, typeof(BindingContext));
+                parentContext = System.Linq.Expressions.Expression.Constant(null, typeof(BindingContext));
             }
 
             var encodedWriterExpression = ResolveEncodedWriter(writerParameter, context.Configuration.TextEncoder);
-            var templatePathExpression = Expression.Constant(templatePath, typeof(string));
-            var newBindingContext = Expression.New(
+            var templatePathExpression = System.Linq.Expressions.Expression.Constant(templatePath, typeof(string));
+            var newBindingContext = System.Linq.Expressions.Expression.New(
                             typeof(BindingContext).GetConstructor(
                                 new[] { typeof(object), typeof(EncodedTextWriter), typeof(BindingContext), typeof(string) }),
                             new[] { objectParameter, encodedWriterExpression, parentContext, templatePathExpression });
-            return Expression.Lambda<Action<TextWriter, object>>(
-                Expression.Block(
+            return System.Linq.Expressions.Expression.Lambda<Action<TextWriter, object>>(
+                System.Linq.Expressions.Expression.Block(
                     new[] { context.BindingContext },
-                    new Expression[]
+                    new System.Linq.Expressions.Expression[]
                     {
-                        Expression.IfThenElse(
-                            Expression.TypeIs(objectParameter, typeof(BindingContext)),
-                            Expression.Assign(context.BindingContext, Expression.TypeAs(objectParameter, typeof(BindingContext))),
-                            Expression.Assign(context.BindingContext, newBindingContext))
+                        System.Linq.Expressions.Expression.IfThenElse(
+                            System.Linq.Expressions.Expression.TypeIs(objectParameter, typeof(BindingContext)),
+                            System.Linq.Expressions.Expression.Assign(context.BindingContext, System.Linq.Expressions.Expression.TypeAs(objectParameter, typeof(BindingContext))),
+                            System.Linq.Expressions.Expression.Assign(context.BindingContext, newBindingContext))
                     }.Concat(
                         ((BlockExpression)body).Expressions
                     )),
                 new[] { writerParameter, objectParameter });
         }
 
-        private static Expression ResolveEncodedWriter(ParameterExpression writerParameter, ITextEncoder textEncoder)
+        private static System.Linq.Expressions.Expression ResolveEncodedWriter(ParameterExpression writerParameter, ITextEncoder textEncoder)
         {
-            var outputEncoderExpression = Expression.Constant(textEncoder, typeof(ITextEncoder));
+            var outputEncoderExpression = System.Linq.Expressions.Expression.Constant(textEncoder, typeof(ITextEncoder));
 
 #if netstandard
             var encodedWriterFromMethod = typeof(EncodedTextWriter).GetRuntimeMethod("From", new[] { typeof(TextWriter), typeof(ITextEncoder) });
@@ -55,7 +57,7 @@ namespace HandlebarsDotNet.Compiler
             var encodedWriterFromMethod = typeof(EncodedTextWriter).GetMethod("From", new[] { typeof(TextWriter), typeof(ITextEncoder) });
 #endif
 
-            return Expression.Call(encodedWriterFromMethod, writerParameter, outputEncoderExpression);
+            return System.Linq.Expressions.Expression.Call(encodedWriterFromMethod, writerParameter, outputEncoderExpression);
         }
     }
 }

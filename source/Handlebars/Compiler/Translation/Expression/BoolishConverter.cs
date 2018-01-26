@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Magxe.Handlebars.Compiler.Structure;
+using System;
 using System.Linq;
-using HandlebarsDotNet.Compiler;
 using System.Linq.Expressions;
 using System.Reflection;
 
-namespace HandlebarsDotNet.Compiler
+namespace Magxe.Handlebars.Compiler.Translation.Expression
 {
     internal class BoolishConverter : HandlebarsExpressionVisitor
     {
-        public static Expression Convert(Expression expr, CompilationContext context)
+        public static System.Linq.Expressions.Expression Convert(System.Linq.Expressions.Expression expr, CompilationContext context)
         {
             return new BoolishConverter(context).Visit(expr);
         }
@@ -18,9 +18,9 @@ namespace HandlebarsDotNet.Compiler
         {
         }
 
-        protected override Expression VisitBoolishExpression(BoolishExpression bex)
+        protected override System.Linq.Expressions.Expression VisitBoolishExpression(BoolishExpression bex)
         {
-            return Expression.Call(
+            return System.Linq.Expressions.Expression.Call(
 #if netstandard
                 new Func<object, bool>(HandlebarsUtils.IsTruthyOrNonEmpty).GetMethodInfo(),
 #else
@@ -29,33 +29,33 @@ namespace HandlebarsDotNet.Compiler
                 Visit(bex.Condition));
         }
 
-        protected override Expression VisitBlock(BlockExpression node)
+        protected override System.Linq.Expressions.Expression VisitBlock(BlockExpression node)
         {
-            return Expression.Block(
+            return System.Linq.Expressions.Expression.Block(
                 node.Type,
                 node.Variables,
-                node.Expressions.Select(expr => Visit(expr)));
+                node.Expressions.Select(Visit));
         }
 
-        protected override Expression VisitUnary(UnaryExpression node)
+        protected override System.Linq.Expressions.Expression VisitUnary(UnaryExpression node)
         {
-            return Expression.MakeUnary(
+            return System.Linq.Expressions.Expression.MakeUnary(
                 node.NodeType,
                 Visit(node.Operand),
                 node.Type);
         }
 
-        protected override Expression VisitMethodCall(MethodCallExpression node)
+        protected override System.Linq.Expressions.Expression VisitMethodCall(MethodCallExpression node)
         {
-            return Expression.Call(
+            return System.Linq.Expressions.Expression.Call(
                 Visit(node.Object),
                 node.Method,
-                node.Arguments.Select(n => Visit(n)));
+                node.Arguments.Select(Visit));
         }
 
-        protected override Expression VisitConditional(ConditionalExpression node)
+        protected override System.Linq.Expressions.Expression VisitConditional(ConditionalExpression node)
         {
-            return Expression.Condition(
+            return System.Linq.Expressions.Expression.Condition(
                 Visit(node.Test),
                 Visit(node.IfTrue),
                 Visit(node.IfFalse));

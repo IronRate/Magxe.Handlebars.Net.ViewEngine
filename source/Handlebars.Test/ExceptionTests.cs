@@ -1,6 +1,7 @@
-﻿using Xunit;
+﻿using Magxe.Handlebars.Compiler;
+using Xunit;
 
-namespace HandlebarsDotNet.Test
+namespace Magxe.Handlebars.Test
 {
     public class ExceptionTests
     {

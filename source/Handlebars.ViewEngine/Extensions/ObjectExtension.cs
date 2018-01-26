@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace HandlebarsDotNet.ViewEngine.Extensions
+namespace Magxe.Handlebars.ViewEngine.Extensions
 {
     internal static class ObjectExtension
     {
