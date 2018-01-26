@@ -1,16 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.3
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handlebars", "Handlebars\Handlebars.csproj", "{A09CFF95-B671-48FE-96A8-D3CBDC110B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars", "Handlebars\Handlebars.csproj", "{A09CFF95-B671-48FE-96A8-D3CBDC110B75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Handlebars.Test", "Handlebars.Test\Handlebars.Test.csproj", "{2BD48FB6-C852-4141-B734-12E501B1D761}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.Test", "Handlebars.Test\Handlebars.Test.csproj", "{2BD48FB6-C852-4141-B734-12E501B1D761}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E9AC0BCD-C060-4634-BBBB-636167C809B4}"
 	ProjectSection(SolutionItems) = preProject
 		..\README.md = ..\README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Handlebars.ViewEngine", "Handlebars.ViewEngine\Handlebars.ViewEngine.csproj", "{9C1EAF64-F83E-4E2D-A3B3-8310F8225433}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,9 +28,16 @@ Global
 		{2BD48FB6-C852-4141-B734-12E501B1D761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BD48FB6-C852-4141-B734-12E501B1D761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BD48FB6-C852-4141-B734-12E501B1D761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C1EAF64-F83E-4E2D-A3B3-8310F8225433}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C1EAF64-F83E-4E2D-A3B3-8310F8225433}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C1EAF64-F83E-4E2D-A3B3-8310F8225433}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C1EAF64-F83E-4E2D-A3B3-8310F8225433}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D50A0E6B-DBE8-4CDC-B31D-85467FC8F80C}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
